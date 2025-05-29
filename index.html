@@ -1,12 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pet Rock Rental</title>
-  </head>
-  <body>
-    <h1>Welcome to Pet Rock Rental</h1>
-    <p>Rent a rock. Change your life.</p>
-  </body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Solid Rentals - Premium Pet Rock Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .rock-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rock-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .rock-card:hover::before {
+            left: 100%;
+        }
+
+        .rock-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #3498db;
+        }
+
+        .rock-card.selected {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #d5f4e6, #a8e6cf);
+            box-shadow: 0 5px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .rock-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .rock-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .rock-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #27ae60;
+            background: rgba(39, 174, 96, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .rental-summary {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(116, 185, 255, 0.4);
+        }
+
+        .rental-summary h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .total-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #27ae60, #2ed573);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.6);
+            background: linear-gradient(45deg, #2ed573, #27ae60);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .rock-emoji {
+            font-size: 2rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🪨 Rock Solid Rentals</h1>
+            <p>Premium Pet Rock Experience - Because Everyone Deserves a Loyal Companion</p>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2>Customer Information</h2>
+                <form id="customerForm">
+                    <div class="form-group">
+                        <label for="customerName">Full Name</label>
+                        <input type="text" id="customerName" name="customerName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rentalDays">Rental Duration (days)</label>
+                        <select id="rentalDays" name="rentalDays">
+                            <option value="1">1 Day</option>
+                            <option value="3">3 Days</option>
+                            <option value="7">1 Week</option>
+                            <option value="14">2 Weeks</option>
+                            <option value="30">1 Month</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>Available Pet Rocks</h2>
+                <div id="rockSelection">
+                    <div class="rock-card" data-rock="rocky" data-price="15">
+                        <div class="rock-name">
+                            <span class="rock-emoji">🪨</span>Rocky
+                        </div>
+                        <div class="rock-description">
+                            The classic relatable rock, who's there at 'rock bottom' with the rest of us. Rocky understands life's ups and downs and provides steady companionship through thick and thin.
+                        </div>
+                        <div class="rock-price">$15/day</div>
+                    </div>
+                    
+                    <div class="rock-card" data-rock="brock" data-price="20">
+                        <div class="rock-name">
+                            <span class="rock-emoji">🕶️</span>Brock
+                        </div>
+                        <div class="rock-description">
+                            The cool rock, whose shades help him hide through the turmoil. Brock brings that effortless cool factor to any situation and helps you navigate life's storms with style.
+                        </div>
+                        <div class="rock-price">$20/day</div>
+                    </div>
+                </div>
+
+                <div class="rental-summary" id="rentalSummary" style="display: none;">
+                    <h3>Rental Summary</h3>
+                    <div id="summaryDetails"></div>
+                    <div class="total-price" id="totalPrice">$0</div>
+                    <button class="btn" onclick="completeRental()">Complete Rental</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedRock = null;
+        let selectedPrice = 0;
+
+        // Rock selection functionality
+        document.querySelectorAll('.rock-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove previous selection
+                document.querySelectorAll('.rock-card').forEach(c => c.classList.remove('selected'));
+                
+                // Select current rock
+                this.classList.add('selected');
+                selectedRock = this.getAttribute('data-rock');
+                selectedPrice = parseInt(this.getAttribute('data-price'));
+                
+                updateRentalSummary();
+            });
+        });
+
+        // Update rental summary when duration changes
+        document.getElementById('rentalDays').addEventListener('change', updateRentalSummary);
+
+        function updateRentalSummary() {
+            const rentalDays = parseInt(document.getElementById('rentalDays').value);
+            const customerName = document.getElementById('customerName').value;
+            const summaryDiv = document.getElementById('rentalSummary');
+            const summaryDetails = document.getElementById('summaryDetails');
+            const totalPriceDiv = document.getElementById('totalPrice');
+
+            if (selectedRock && rentalDays) {
+                const totalPrice = selectedPrice * rentalDays;
+                const rockName = selectedRock === 'rocky' ? 'Rocky' : 'Brock';
+                
+                summaryDetails.innerHTML = `
+                    <p><strong>Customer:</strong> ${customerName || 'Not provided'}</p>
+                    <p><strong>Pet Rock:</strong> ${rockName}</p>
+                    <p><strong>Duration:</strong> ${rentalDays} day${rentalDays > 1 ? 's' : ''}</p>
+                    <p><strong>Daily Rate:</strong> $${selectedPrice}</p>
+                `;
+                
+                totalPriceDiv.textContent = `$${totalPrice}`;
+                summaryDiv.style.display = 'block';
+            } else {
+                summaryDiv.style.display = 'none';
+            }
+        }
+
+        function completeRental() {
+            const form = document.getElementById('customerForm');
+            const formData = new FormData(form);
+            const customerName = formData.get('customerName');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const rentalDays = parseInt(formData.get('rentalDays'));
+
+            if (!customerName || !email || !phone || !selectedRock) {
+                alert('Please fill in all customer information and select a pet rock!');
+                return;
+            }
+
+            const totalPrice = selectedPrice * rentalDays;
+            const rockName = selectedRock === 'rocky' ? 'Rocky' : 'Brock';
+
+            alert(`🎉 Rental Confirmed! 🎉\n\nCustomer: ${customerName}\nEmail: ${email}\nPhone: ${phone}\nPet Rock: ${rockName}\nDuration: ${rentalDays} day${rentalDays > 1 ? 's' : ''}\nTotal Cost: $${totalPrice}\n\nYour pet rock will be delivered shortly! Thank you for choosing Rock Solid Rentals!`);
+            
+            // Reset form
+            form.reset();
+            document.querySelectorAll('.rock-card').forEach(c => c.classList.remove('selected'));
+            selectedRock = null;
+            selectedPrice = 0;
+            document.getElementById('rentalSummary').style.display = 'none';
+        }
+
+        // Update summary when customer name changes
+        document.getElementById('customerName').addEventListener('input', updateRentalSummary);
+    </script>
+</body>
 </html>
