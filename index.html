@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Solid Rentals - Premium Pet Rock Experience</title>
+    <title>🪨 Grounded Pet Rock Rentals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,28 +12,37 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --earth-brown: #8B4513;
+            --warm-gray: #6B5B73;
+            --sage-green: #9CAF88;
+            --friendship-yellow: #F4D03F;
+            --light-stone: #E8E2D4;
+            --dark-stone: #4A4A4A;
+            --cream: #FAF7F0;
+            --accent-orange: #D2691E;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-stone);
+            background: linear-gradient(135deg, var(--light-stone) 0%, var(--cream) 100%);
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            padding: 0 20px;
         }
 
+        /* Header */
         .header {
-            background: linear-gradient(45deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, var(--earth-brown) 0%, var(--warm-gray) 100%);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 4rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -40,102 +50,108 @@
         .header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255, 255, 255, 0.1) 10px,
-                rgba(255, 255, 255, 0.1) 20px
-            );
-            animation: slide 20s linear infinite;
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(-50px) translateY(-50px); }
-            100% { transform: translateX(50px) translateY(50px); }
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(244,208,63,0.3)"/><circle cx="75" cy="25" r="1.5" fill="rgba(244,208,63,0.2)"/><circle cx="50" cy="75" r="1" fill="rgba(244,208,63,0.4)"/><circle cx="20" cy="80" r="1.5" fill="rgba(244,208,63,0.2)"/><circle cx="80" cy="70" r="2" fill="rgba(244,208,63,0.3)"/></svg>') repeat;
+            opacity: 0.6;
         }
 
         .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
             position: relative;
             z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             position: relative;
             z-index: 1;
-            opacity: 0.9;
+            opacity: 0.95;
+            font-weight: 500;
         }
 
+        /* Main Layout */
         .main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 40px;
+            gap: 3rem;
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .section {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+            border: 3px solid var(--light-stone);
+            transition: all 0.3s ease;
         }
 
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.15);
+            border-color: var(--friendship-yellow);
         }
 
         .section h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+            font-family: 'Fredoka One', cursive;
+            color: var(--earth-brown);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--friendship-yellow);
+            padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
+        /* Form Styles */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #34495e;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--warm-gray);
+            font-size: 1rem;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, 
+        .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ecf0f1;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-        }
-
-        .rock-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border: 2px solid #dee2e6;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 1rem;
+            border: 2px solid var(--light-stone);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
             transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 3px rgba(156, 175, 136, 0.2);
+            background: white;
+        }
+
+        /* Rock Cards */
+        .rock-card {
+            background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+            border: 3px solid var(--light-stone);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -147,141 +163,256 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(244, 208, 63, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .rock-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: var(--friendship-yellow);
+            box-shadow: 0 12px 35px rgba(139, 69, 19, 0.2);
         }
 
         .rock-card:hover::before {
             left: 100%;
         }
 
-        .rock-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border-color: #3498db;
-        }
-
         .rock-card.selected {
-            border-color: #27ae60;
-            background: linear-gradient(135deg, #d5f4e6, #a8e6cf);
-            box-shadow: 0 5px 20px rgba(39, 174, 96, 0.3);
+            border-color: var(--sage-green);
+            background: linear-gradient(135deg, rgba(156, 175, 136, 0.1) 0%, rgba(244, 208, 63, 0.1) 100%);
+            box-shadow: 0 8px 25px rgba(156, 175, 136, 0.3);
         }
 
         .rock-name {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .rock-description {
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .rock-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #27ae60;
-            background: rgba(39, 174, 96, 0.1);
-            padding: 5px 10px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .rental-summary {
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(116, 185, 255, 0.4);
-        }
-
-        .rental-summary h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .total-price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #27ae60, #2ed573);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
-            margin-top: 15px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.6);
-            background: linear-gradient(45deg, #2ed573, #27ae60);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            color: var(--earth-brown);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .rock-emoji {
-            font-size: 2rem;
-            margin-right: 10px;
-            vertical-align: middle;
+            font-size: 2.2rem;
+        }
+
+        .rock-description {
+            color: var(--warm-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .rock-price {
+            background: var(--friendship-yellow);
+            color: var(--earth-brown);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(244, 208, 63, 0.4);
+        }
+
+        /* Rental Summary */
+        .rental-summary {
+            background: linear-gradient(135deg, var(--sage-green) 0%, var(--earth-brown) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(156, 175, 136, 0.4);
+            display: none;
+        }
+
+        .rental-summary h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .total-price {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3rem;
+            margin: 1rem 0;
+            color: var(--friendship-yellow);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--accent-orange), var(--earth-brown));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(210, 105, 30, 0.4);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(210, 105, 30, 0.6);
+            background: linear-gradient(45deg, var(--earth-brown), var(--accent-orange));
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--friendship-yellow) 0%, #F7DC6F 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(244, 208, 63, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🪨';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+
+        .cta-section::after {
+            content: '🪨';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.1;
+            top: 20%;
+            right: 15%;
+            transform: rotate(25deg);
+        }
+
+        .cta-section h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--earth-brown);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, var(--earth-brown), var(--warm-gray));
+            color: white;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.6);
+            background: linear-gradient(45deg, var(--warm-gray), var(--earth-brown));
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .header {
+                padding: 3rem 1rem;
+            }
+            
+            .cta-section {
+                padding: 3rem 1rem;
+                margin: 2rem 1rem;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rock-name {
+                font-size: 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .total-price {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🪨 Rock Solid Rentals</h1>
-            <p>Premium Pet Rock Experience - Because Everyone Deserves a Loyal Companion</p>
+    <div class="header">
+        <div class="container">
+            <h1>🪨 Grounded Pet Rock Rentals</h1>
+            <p>Premium Pet Rock Experience - Your Perfect Stone Companion Awaits!</p>
         </div>
+    </div>
 
+    <div class="container">
         <div class="main-content">
             <div class="section">
                 <h2>Customer Information</h2>
                 <form id="customerForm">
                     <div class="form-group">
                         <label for="customerName">Full Name</label>
-                        <input type="text" id="customerName" name="customerName" required>
+                        <input type="text" id="customerName" name="customerName" required placeholder="Enter your full name">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
                     </div>
                     
                     <div class="form-group">
-                        <label for="rentalDays">Rental Duration (days)</label>
+                        <label for="rentalDays">Rental Duration</label>
                         <select id="rentalDays" name="rentalDays">
                             <option value="1">1 Day</option>
                             <option value="3">3 Days</option>
@@ -317,13 +448,19 @@
                     </div>
                 </div>
 
-                <div class="rental-summary" id="rentalSummary" style="display: none;">
+                <div class="rental-summary" id="rentalSummary">
                     <h3>Rental Summary</h3>
                     <div id="summaryDetails"></div>
                     <div class="total-price" id="totalPrice">$0</div>
                     <button class="btn" onclick="completeRental()">Complete Rental</button>
                 </div>
             </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready for Your Perfect Rock Companion?</h2>
+            <p>Join thousands of happy customers who've found friendship and loyalty in our premium pet rocks. No feeding, no walking, just pure companionship!</p>
+            <button class="cta-btn" onclick="scrollToRocks()">Rent Your Rock Today!</button>
         </div>
     </div>
 
@@ -390,7 +527,9 @@
             const totalPrice = selectedPrice * rentalDays;
             const rockName = selectedRock === 'rocky' ? 'Rocky' : 'Brock';
 
-            alert(`🎉 Rental Confirmed! 🎉\n\nCustomer: ${customerName}\nEmail: ${email}\nPhone: ${phone}\nPet Rock: ${rockName}\nDuration: ${rentalDays} day${rentalDays > 1 ? 's' : ''}\nTotal Cost: $${totalPrice}\n\nYour pet rock will be delivered shortly! Thank you for choosing Rock Solid Rentals!`);
+            alert(`🎉 Rental Confirmed! 
+            🎉\n\nCustomer: ${customerName}\nEmail: ${email}\nPhone: ${phone}\nPet Rock: ${rockName}\nDuration: ${rentalDays} day${rentalDays > 1 ? 's' : ''}
+            \nTotal Cost: $${totalPrice}\n\nYour rock-solid friend will be delivered shortly! Thank you for choosing Grounded Pet Rock Rentals!`);
             
             // Reset form
             form.reset();
@@ -398,6 +537,13 @@
             selectedRock = null;
             selectedPrice = 0;
             document.getElementById('rentalSummary').style.display = 'none';
+        }
+
+        function scrollToRocks() {
+            document.querySelector('#rockSelection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
 
         // Update summary when customer name changes
